@@ -4,7 +4,7 @@ Date: 2026-01-08
 
 ## Scope and Methodology
 - Reviewed source under `cmd/`, `pkg/`, `examples/`, install script, and Go module manifests (`go.mod`, `go.sum`).
-- Ran `go test ./...` to establish a baseline; sandbox container tests failed locally because no container runtime (Podman/Docker) is available in the environment.
+- Ran `go test ./...` to establish a baseline; sandbox container tests failed locally because a container runtime (Podman/Docker) is not available in the environment.
 - Looked for unexpected network calls, telemetry, credential collection, or obfuscated logic.
 
 ## Findings
@@ -20,4 +20,4 @@ Date: 2026-01-08
 - Continue to keep dependencies up to date and monitor for CVEs.
 
 ## Test Baseline
-- `go test ./...` — **fails** only for `pkg/sandbox` container tests because no container runtime is present in this environment. Other packages pass.
+- `go test ./...` — **fails** only for `pkg/sandbox` container tests due to missing container runtime. Other packages pass.
